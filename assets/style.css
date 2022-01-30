@@ -1,0 +1,194 @@
+* {
+    margin:0;
+    padding:0;
+}
+
+/* Use a background to make the app look more 'weathery' */
+body {
+    font-family: 'Poiret One', cursive;
+    background:url('https://images.unsplash.com/photo-1599756702768-208d02ad2e79?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1287&q=80');
+    background-repeat:no-repeat;
+    background-size:cover;
+    overflow:hidden;
+    height: 100vh;
+
+}
+
+.container {
+    padding: 10px 50px;
+    color:aliceblue
+}
+
+.current-day-info {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.place-container {
+    font-size: 50px;
+}
+
+.date-container {
+    text-align:end;
+    padding: 20px;
+}
+
+.date-container .time {
+    font-size: 50px;    
+}
+
+.date-container #am-pm {
+    font-size: 20px;
+    margin-left: 30px;
+}
+
+.date-container .date {
+    font-size: 20px;
+    padding: 10px;
+}
+
+.misc {
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
+    background: rgba(26, 26, 26, 0.3);
+    border-radius: 10px;
+}
+
+.misc .weather-misc {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px;
+}
+
+.good-uv {
+    color: rgba(65, 247, 126, 1);
+}
+
+.bad-uv {
+    color: rgb(255, 5, 5);
+}
+
+
+
+.forecast {
+    color:aliceblue;
+    background: rgba(26,26,26,0.5);
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    width: 100vw;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+}
+
+.forecast .today {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px;
+    margin: 5px 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 100%;
+}
+
+.forecast .today .day {
+    font-size: 30px;
+    padding: 5px 5px;
+    margin-bottom: 22px;
+    background: rgba(26, 26, 26, 0.7);
+    border-radius: 10px;
+}
+
+.forecast .today .temp {
+    font-size: 25px;
+    padding: 22px 10px;
+}
+
+.forecast .weather-forecast {
+    display:flex;
+}
+
+.weather-forecast .weather-forecast-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 5px;
+    margin: 5px 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.weather-forecast .weather-forecast-card .forecast-when {
+    background: rgba(26, 26, 26, 0.7);
+    padding: 5px 5px;
+    border-radius: 10px;
+    text-align:center;
+}
+
+
+/* At smaller screen sizes, the weather 5 day forecast at the bottom of screen scrolls and the today and city info neatly display in center */
+@media screen and (max-width:850px) {
+
+    .forecast {
+        justify-content: start;
+        align-items: none;
+        overflow-y:scroll;
+    }
+
+    .forecast .today .temp {
+        font-size: 15px;
+    
+    }
+
+    .forecast .today .day {
+        font-size: 15px;
+    }
+
+    .place-container {
+        text-align:start;
+        font-size: 25px;
+    }
+
+    .date-container{
+        text-align: end;
+    }
+
+    .date-container .time {
+        font-size: 25px;    
+    }
+    
+    .date-container #am-pm {
+        font-size: 10px;
+        margin-left: 15px;
+    }
+    
+    .date-container .date {
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .misc {
+        font-size: 10px;
+    }
+
+
+    .forecast .today .day {
+        font-size: 15px;
+    }
+
+    .forecast .today .temp {
+        font-size: 12px;
+    }
+
+    .weather-forecast-card {
+        font-size: 10px;
+    }
+
+
+}

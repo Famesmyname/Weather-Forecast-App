@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast App</title>
+    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="container">
+
+        <div class="current-day-info">
+            <div class="place-container">
+                <div class="city" id="city">Boston</div>
+                <div class="time-zone" id="time-zone">EST</div>
+                <input type="text" name="city-search" id="city-search">
+            </div>
+
+            <div class="date-container">
+                <div class="time" id="time">6:30</div>
+                <div class="date" id="date">Sunday, January 1</div>
+                <div class="misc" id="current-weather">
+                    <div class="weather-misc">
+                        <div>Wind</div>
+                        <div class="wind" id="wind">5mph</div>
+                    </div>
+                    <div class="weather-misc">
+                        <div>Humidity</div>
+                        <div class="humidity" id="humidity">60%</div>
+                    </div>
+                    <div class="weather-misc">
+                        <div>UV Index</div>
+                        <div class="uv-index" id="uv-index">0.50</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+        <div class="forecast" id="forecast">
+            <div class="today" id="current-temp">
+                <img class= "weather-icon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon">
+                <div class="today-info">
+                    <div class="day">Today</div>
+                    <div class="temp">Day 25&#176; C</div>
+                    <div class="temp">Night 13&#176; C</div>
+                    <div class="forecast-wind"></div>
+                    <div class="forecast-humidity"></div>    
+                </div> 
+            </div>
+
+            <div class="weather-forecast" id="weather-forecast">
+                <div class="weather-forecast-card">
+                    <div class="forecast-when">
+                        <div class="forecast-date">01/31/2022</div>
+                        <div class="day">Monday</div>
+                    </div>
+                    <img class= "weather-icon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon">
+                    <div class="temp">Day 25&#176; C</div>
+                    <div class="temp">Night 13&#176; C</div>
+                    <div class="forecast-wind">W</div>
+                    <div class="forecast-humidity">H</div>   
+                </div>      
+                <div class="weather-forecast-card">
+                    <div class="forecast-when">
+                        <div class="forecast-date">01/31/2022</div>
+                        <div class="day">Tuesday</div>
+                    </div>
+                    <img class= "weather-icon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon">
+                    <div class="temp">Day 25&#176; C</div>
+                    <div class="temp">Night 13&#176; C</div>
+                    <div class="forecast-wind">W</div>
+                    <div class="forecast-humidity">H</div>   
+                </div> 
+                <div class="weather-forecast-card">
+                    <div class="forecast-when">
+                        <div class="forecast-date">01/31/2022</div>
+                        <div class="day">Tuesday</div>
+                    </div>
+                    <img class= "weather-icon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon">
+                    <div class="temp">Day 25&#176; C</div>
+                    <div class="temp">Night 13&#176; C</div>
+                    <div class="forecast-wind">W</div>
+                    <div class="forecast-humidity">H</div>   
+                </div> 
+                <div class="weather-forecast-card">
+                    <div class="forecast-when">
+                        <div class="forecast-date">01/31/2022</div>
+                        <div class="day">Tuesday</div>
+                    </div>
+                    <img class= "weather-icon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon">
+                    <div class="temp">Day 25&#176; C</div>
+                    <div class="temp">Night 13&#176; C</div>
+                    <div class="forecast-wind">W</div>
+                    <div class="forecast-humidity">H</div>   
+                </div> 
+                <div class="weather-forecast-card">
+                    <div class="forecast-when">
+                        <div class="forecast-date">01/31/2022</div>
+                        <div class="day">Tuesday</div>
+                    </div>
+                    <img class= "weather-icon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="Weather Icon">
+                    <div class="temp">Day 25&#176; C</div>
+                    <div class="temp">Night 13&#176; C</div>
+                    <div class="forecast-wind">W</div>
+                    <div class="forecast-humidity">H</div>   
+                </div>        
+            </div>
+        </div>
+   
+
+    <script src="./assets/script.js"></script>
+</body>
+</html>
