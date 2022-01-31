@@ -26,17 +26,14 @@ body {
 }
 
 .place-container {
-    flex-direction: row;
     font-size: 50px;
 }
 
 .lat-container {
-    flex-direction: row;
     font-size: 20px;
 }
 
 .lon-container {
-    flex-direction: row;
     font-size: 20px;
 }
 
@@ -187,6 +184,14 @@ body {
         font-size: 25px;
     }
 
+    .lat-container {
+        font-size: 15px;
+    }
+    
+    .lon-container {
+        font-size: 15px;
+    }
+
     .date-container{
         text-align: end;
     }
@@ -196,17 +201,17 @@ body {
     }
     
     .date-container #am-pm {
-        font-size: 10px;
+        font-size: 15px;
         margin-left: 15px;
     }
     
     .date-container .date {
-        font-size: 10px;
+        font-size: 15px;
         padding: 5px;
     }
 
     .misc {
-        font-size: 10px;
+        font-size: 15px;
     }
 
 

@@ -20,8 +20,8 @@ var lon
 
 // API here
 const APIKEY = '280bb0999946126ed42a0811df928435';
-const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=` + cityEl.textContent + `&appid=${APIKEY}&units=metric`;
-var onecallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=` + lat + `&lon=` + lon + `&units=metric&appid=${APIKEY}`
+var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=` + cityEl.textContent + `&appid=${APIKEY}&units=metric`;
+var onecallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=` + latitude.innerText + `&lon=` + longitude.innerText + `&exclude=hourly&units=metric&appid=${APIKEY}`
 
  function getCoord() {
         fetch (apiURL)
