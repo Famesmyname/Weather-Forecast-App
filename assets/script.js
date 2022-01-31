@@ -23,6 +23,13 @@ const APIKEY = '280bb0999946126ed42a0811df928435';
 var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=` + cityEl.textContent + `&appid=${APIKEY}&units=metric`;
 var onecallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=` + latitude.innerText + `&lon=` + longitude.innerText + `&exclude=hourly&units=metric&appid=${APIKEY}`
 
+// All Event listeners here
+form.addEventListener("submit", e => {
+    e.preventDefault();
+    inputVal = input.value;
+  });
+
+
 //Functions Here
 
 //Function to get coords for use with weather forcast one call
@@ -117,26 +124,11 @@ function showWeatherData (data) {
     document.querySelector('.d5forecast-humidity').innerText = data.daily[4].humidity + ' %'
     document.querySelector('.d5weather-icon').src = `http://openweathermap.org/img/wn/${d5icon}.png`
 
-
-
-
-
-
 }
 
-
-
-// All Event listeners here
-form.addEventListener("submit", e => {
-    e.preventDefault();
-    inputVal = input.value;
-  });
-
-
-
-
-
-// Functions here
+// function forecastDates ()
+//     let d1 = moment().add(1, 'days');
+//     document.querySelector('.d1forecast-date').innerText = d1.format(MM DD YYYY);
 
 
 // Display date and time without using moment
@@ -150,11 +142,15 @@ setInterval(() => {
     var minutes = time.getMinutes();
     minutes = minutes < 10 ? '0'+minutes : minutes;
     var ampm = hour >= 12 ? 'pm' : 'am';
-
     var timeNow = hours12Hr + ':' + minutes + ' ' + ampm;
-
     timeEl.innerHTML = timeNow
-
     dateEl.innerHTML = days[day] + ', ' + months[month] + ' ' + date
-
 },1000);
+
+
+getCoord()
+
+setInterval(() => {
+    fetchWeather()
+},5000);
+
