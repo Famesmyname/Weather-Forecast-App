@@ -94,11 +94,15 @@ body {
 }
 
 .good-uv {
-    color: rgba(65, 247, 126, 1);
+    color: rgba(65, 247, 126, 0.9);
+}
+
+.med-uv {
+    color: rgb(253, 249, 11, 0.9)
 }
 
 .bad-uv {
-    color: rgb(255, 5, 5);
+    color: rgb(255, 5, 5, 0.9);
 }
 
 

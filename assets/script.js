@@ -1,9 +1,10 @@
 // Define all HTML elements
 
 const timeEl = document.getElementById('time');
-const ampmEl = document.getElementById('am-pm')
+const ampmEl = document.getElementById('am-pm');
 const dateEl = document.getElementById('date');
 const currentWeatherEl = document.getElementById('current-weather');
+const uviEl = document.getElementById('uvi');
 const cityEl = document.getElementById('city');
 const latitude = document.getElementById('lat')
 const longitude = document.getElementById('lon')
@@ -11,23 +12,27 @@ const weatherForecastEl = document.getElementById('weather-forecast');
 const currentTempEl = document.getElementById('current-temp');
 const form = document.querySelector('.form')
 const input = document.querySelector('.input');
+const weatherIconEl = document.querySelector('.weather-icon')
 
 // Define all variables to be used
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-var lat
-var lon
 
 // API here
 const APIKEY = '280bb0999946126ed42a0811df928435';
 var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=` + cityEl.textContent + `&appid=${APIKEY}&units=metric`;
 var onecallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=` + latitude.innerText + `&lon=` + longitude.innerText + `&exclude=hourly&units=metric&appid=${APIKEY}`
 
- function getCoord() {
+//Functions Here
+
+//Function to get coords for use with weather forcast one call
+function getCoord() {
         fetch (apiURL)
         .then((response) => response.json())
         // .then((data) => console.log(data))
         .then((data) => displayCoord(data))  
+
+        
 
         function displayCoord(data) {
         var { lat } = data.coord;
@@ -37,13 +42,86 @@ var onecallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=` + latitu
         // console.log(lat, lon)
         document.querySelector('.latitude').innerText = lat
         document.querySelector('.longitude').innerText = lon
+        console.log(onecallURL)
     }   
  }
 
 function fetchWeather() {
-        fetch (onecallURL)
+         onecallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=` + latitude.innerText + `&lon=` + longitude.innerText + `&exclude=hourly&units=metric&appid=${APIKEY}`
+         console.log(onecallURL)
+         fetch (onecallURL)
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+            console.log(data);
+            showWeatherData(data);    
+        })
+}
+
+function showWeatherData (data) {
+// TODAY
+    let {humidity, wind_speed, temp, uvi} = data.current;
+    let {icon} = data.current.weather[0]
+    // console.log(humidity, wind_speed, temp, uvi, icon)
+    document.querySelector('.wind').innerText = wind_speed + ' kph';
+    document.querySelector('.humidity').innerText = humidity + `%`;
+    document.querySelector('.uvi').innerText = uvi;
+    document.querySelector('.weather-icon').src = `http://openweathermap.org/img/wn/${icon}.png`
+    document.querySelector('.temp').innerText = temp + String.fromCharCode(176) + ' C';
+    
+    // Change color of UV index value based on danger level
+    if (uvi <= 2) {
+        uviEl.classList.remove('bad-uv')
+        uviEl.classList.remove('med-uv')
+        uviEl.classList.add('good-uv')
+    }
+    else if (uvi >= 6) {
+        uviEl.classList.remove('good-uv')
+        uviEl.classList.remove('med-uv')
+        uviEl.classList.add('bad-uv')
+    }
+    else {
+        uviEl.classList.remove('bad-uv')
+        uviEl.classList.remove('good-uv')
+        uviEl.classList.add('med-uv')
+    }
+
+// FORECAST Day1-Day5
+    let d1icon = data.daily[0].weather[0].icon
+    console.log(d1icon)
+    document.querySelector('.d1temp').innerText = data.daily[0].temp.max + String.fromCharCode(176) + ' C'
+    document.querySelector('.d1forecast-wind').innerText = data.daily[0].wind_speed + ' kph'
+    document.querySelector('.d1forecast-humidity').innerText = data.daily[0].humidity + ' %'
+    document.querySelector('.d1weather-icon').src = `http://openweathermap.org/img/wn/${d1icon}.png`
+
+    let d2icon = data.daily[1].weather[0].icon
+    document.querySelector('.d2temp').innerText = data.daily[1].temp.max + String.fromCharCode(176) + ' C'
+    document.querySelector('.d2forecast-wind').innerText = data.daily[1].wind_speed + ' kph'
+    document.querySelector('.d2forecast-humidity').innerText = data.daily[1].humidity + ' %'
+    document.querySelector('.d2weather-icon').src = `http://openweathermap.org/img/wn/${d2icon}.png`
+
+    let d3icon = data.daily[2].weather[0].icon
+    document.querySelector('.d3temp').innerText = data.daily[2].temp.max + String.fromCharCode(176) + ' C'
+    document.querySelector('.d3forecast-wind').innerText = data.daily[2].wind_speed + ' kph'
+    document.querySelector('.d3forecast-humidity').innerText = data.daily[2].humidity + ' %'
+    document.querySelector('.d3weather-icon').src = `http://openweathermap.org/img/wn/${d3icon}.png`
+
+    let d4icon = data.daily[3].weather[0].icon
+    document.querySelector('.d4temp').innerText = data.daily[3].temp.max + String.fromCharCode(176) + ' C'
+    document.querySelector('.d4forecast-wind').innerText = data.daily[3].wind_speed + ' kph'
+    document.querySelector('.d4forecast-humidity').innerText = data.daily[3].humidity + ' %'
+    document.querySelector('.d4weather-icon').src = `http://openweathermap.org/img/wn/${d4icon}.png`
+
+    let d5icon = data.daily[4].weather[0].icon
+    document.querySelector('.d5temp').innerText = data.daily[4].temp.max + String.fromCharCode(176) + ' C'
+    document.querySelector('.d5forecast-wind').innerText = data.daily[4].wind_speed + ' kph'
+    document.querySelector('.d5forecast-humidity').innerText = data.daily[4].humidity + ' %'
+    document.querySelector('.d5weather-icon').src = `http://openweathermap.org/img/wn/${d5icon}.png`
+
+
+
+
+
+
 }
 
 
