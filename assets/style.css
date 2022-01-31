@@ -26,7 +26,18 @@ body {
 }
 
 .place-container {
+    flex-direction: row;
     font-size: 50px;
+}
+
+.lat-container {
+    flex-direction: row;
+    font-size: 20px;
+}
+
+.lon-container {
+    flex-direction: row;
+    font-size: 20px;
 }
 
 .date-container {
@@ -63,6 +74,28 @@ body {
     padding: 2px;
 }
 
+.btn, .input {
+    border: 1px whitesmoke solid;
+    font-size: 1rem;
+    padding: 15px;
+    background: none;
+    outline: none;
+    color: aliceblue;
+    border-radius: 5px;
+}
+
+.btn {
+    letter-spacing: 0.1em;
+    padding: 15px 20px;
+    margin-left: 15px;
+
+}
+
+.btn:hover {
+    border-color: cyan;
+    color: cyan;
+}
+
 .good-uv {
     color: rgba(65, 247, 126, 1);
 }
@@ -70,7 +103,6 @@ body {
 .bad-uv {
     color: rgb(255, 5, 5);
 }
-
 
 
 .forecast {
