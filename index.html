@@ -16,7 +16,7 @@
 
         <div class="current-day-info">
             <div class="place-container">
-                <div class="city" id="city">Irvine</div>
+                <div class="city" id="city">New York</div>
                 <div class="lat-container">
                     <div>Latitude: </div>
                     <div class="latitude" id="lat">0</div>
@@ -25,11 +25,13 @@
                     <div>Longitude: </div>
                     <div class="longitude" id=lon>0</div>
                 </div>
-                <form class="form">
-                    <input class="input" placeholder="Search for a city" type="text" name="city-search" id="city-search">
-                    <button class="btn" type="submit">Submit</button>
+                <form class="form city-form">
+                    <input class="input city-input" placeholder="Search for a city" type="text" name="city-input" id="city-input">
+                    <button class="add-btn btn" type="submit">Submit</button>
                     <span class="msg"></span>
                 </form>
+                <div class="city-list"></div>
+                <button class="clear-btn btn">Clear All Cities</button>
             </div>
 
             <div class="date-container">

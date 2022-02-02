@@ -19,6 +19,15 @@ body {
     color:aliceblue
 }
 
+.city-list {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+
 .current-day-info {
     display: flex;
     justify-content: space-between;

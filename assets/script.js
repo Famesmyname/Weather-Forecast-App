@@ -1,5 +1,9 @@
 // Define all HTML elements
-
+const cityInput = document.querySelector('.city-input');
+const cityForm = document.querySelector('.city-form');
+const cityList = document.querySelector('.city-list');
+const cityBtn = document.querySelector('.city-btn')
+const clearBtn = document.querySelector('.clear-btn')
 const timeEl = document.getElementById('time');
 const ampmEl = document.getElementById('am-pm');
 const dateEl = document.getElementById('date');
@@ -17,6 +21,8 @@ const weatherIconEl = document.querySelector('.weather-icon')
 // Define all variables to be used
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+var cities = [];
+
 
 // API here
 const APIKEY = '280bb0999946126ed42a0811df928435';
@@ -28,18 +34,82 @@ form.addEventListener("submit", e => {
     e.preventDefault();
     inputVal = input.value;
   });
+  
+cityForm.addEventListener("submit", function(event) {
+    event.preventDefault();
+    var cityText = cityInput.value.trim();
+    if (cityText === "") {
+    return;
+    }
+    cityEl.textContent = cityText
+    cities.push(cityText);
+    cityInput.value = "";
+    storeCities();
+    renderCities();
+    getCoord();
+    setTimeout(fetchWeather, 500);
+});
 
+cityList.addEventListener("click", function(event) {
+    var element = event.target;
+    console.log(event.target.innerText)
+    if (element.matches("button") === true) {
+    cityEl.textContent = event.target.innerText
+    getCoord();
+    setTimeout(fetchWeather, 500);
+    }
+})
+
+clearBtn.addEventListener("click", function() {
+    cities = [];
+    storeCities();
+    renderCities();
+}) 
 
 //Functions Here
 
+//Take recovered local storage city list and create city buttons
+function renderCities() {
+    cityList.innerHTML = "";
+  
+    for (var i = 0; i < cities.length; i++) {
+      var city = cities[i]
+      var button = document.createElement("button");
+      button.classList.add('city-btn')
+      button.classList.add('btn')
+      button.textContent = city;
+      cityList.appendChild(button);
+    }
+  }
+
+//Store entered city onto local storage then render the city button
+  function storeCities() {
+    localStorage.setItem("cities", JSON.stringify(cities));
+  }
+
+  //Webpage initialization, show city list then get coordinates for default city and set the weather forecast
+  function init() {
+    var storedCities = JSON.parse(localStorage.getItem("cities"));
+    if (storedCities !== null) {
+      cities = storedCities;
+    }
+    renderCities();
+    getCoord();
+    setTimeout(fetchWeather, 500);
+  }
+
+function cityWeather () {
+    getCoord()
+    fetchWeather()
+}
+
 //Function to get coords for use with weather forcast one call
 function getCoord() {
+        apiURL = `https://api.openweathermap.org/data/2.5/weather?q=` + cityEl.textContent + `&appid=${APIKEY}&units=metric`;
         fetch (apiURL)
         .then((response) => response.json())
         // .then((data) => console.log(data))
         .then((data) => displayCoord(data))  
-
-        
 
         function displayCoord(data) {
         var { lat } = data.coord;
@@ -54,7 +124,7 @@ function getCoord() {
  }
 
 function fetchWeather() {
-         onecallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=` + latitude.innerText + `&lon=` + longitude.innerText + `&exclude=hourly&units=metric&appid=${APIKEY}`
+         onecallURL = `https://api.openweathermap.org/data/2.5/onecall?lat=` +  document.querySelector('.latitude').innerText + `&lon=` +  document.querySelector('.longitude').innerText + `&exclude=hourly&units=metric&appid=${APIKEY}`
          console.log(onecallURL)
          fetch (onecallURL)
         .then((response) => response.json())
@@ -147,10 +217,4 @@ setInterval(() => {
     dateEl.innerHTML = days[day] + ', ' + months[month] + ' ' + date
 },1000);
 
-
-getCoord()
-
-setInterval(() => {
-    fetchWeather()
-},5000);
-
+init()
