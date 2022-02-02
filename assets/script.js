@@ -52,7 +52,7 @@ cityForm.addEventListener("submit", function(event) {
 
 cityList.addEventListener("click", function(event) {
     var element = event.target;
-    console.log(event.target.innerText)
+    // console.log(event.target.innerText)
     if (element.matches("button") === true) {
     cityEl.textContent = event.target.innerText
     getCoord();
@@ -119,7 +119,7 @@ function getCoord() {
         // console.log(lat, lon)
         document.querySelector('.latitude').innerText = lat
         document.querySelector('.longitude').innerText = lon
-        console.log(onecallURL)
+        // console.log(onecallURL)
     }   
  }
 
@@ -166,39 +166,51 @@ function showWeatherData (data) {
     let d1icon = data.daily[0].weather[0].icon
     console.log(d1icon)
     document.querySelector('.d1temp').innerText = data.daily[0].temp.max + String.fromCharCode(176) + ' C'
-    document.querySelector('.d1forecast-wind').innerText = data.daily[0].wind_speed + ' kph'
-    document.querySelector('.d1forecast-humidity').innerText = data.daily[0].humidity + ' %'
+    document.querySelector('.d1forecast-wind').innerText = 'W: ' + data.daily[0].wind_speed + ' kph'
+    document.querySelector('.d1forecast-humidity').innerText = 'H: ' + data.daily[0].humidity + ' %'
     document.querySelector('.d1weather-icon').src = `http://openweathermap.org/img/wn/${d1icon}.png`
 
     let d2icon = data.daily[1].weather[0].icon
     document.querySelector('.d2temp').innerText = data.daily[1].temp.max + String.fromCharCode(176) + ' C'
-    document.querySelector('.d2forecast-wind').innerText = data.daily[1].wind_speed + ' kph'
-    document.querySelector('.d2forecast-humidity').innerText = data.daily[1].humidity + ' %'
+    document.querySelector('.d2forecast-wind').innerText = 'W: ' + data.daily[1].wind_speed + ' kph'
+    document.querySelector('.d2forecast-humidity').innerText = 'H: ' + data.daily[1].humidity + ' %'
     document.querySelector('.d2weather-icon').src = `http://openweathermap.org/img/wn/${d2icon}.png`
 
     let d3icon = data.daily[2].weather[0].icon
     document.querySelector('.d3temp').innerText = data.daily[2].temp.max + String.fromCharCode(176) + ' C'
-    document.querySelector('.d3forecast-wind').innerText = data.daily[2].wind_speed + ' kph'
-    document.querySelector('.d3forecast-humidity').innerText = data.daily[2].humidity + ' %'
+    document.querySelector('.d3forecast-wind').innerText = 'W: ' + data.daily[2].wind_speed + ' kph'
+    document.querySelector('.d3forecast-humidity').innerText = 'H: ' + data.daily[2].humidity + ' %'
     document.querySelector('.d3weather-icon').src = `http://openweathermap.org/img/wn/${d3icon}.png`
 
     let d4icon = data.daily[3].weather[0].icon
     document.querySelector('.d4temp').innerText = data.daily[3].temp.max + String.fromCharCode(176) + ' C'
-    document.querySelector('.d4forecast-wind').innerText = data.daily[3].wind_speed + ' kph'
-    document.querySelector('.d4forecast-humidity').innerText = data.daily[3].humidity + ' %'
+    document.querySelector('.d4forecast-wind').innerText = 'W: ' + data.daily[3].wind_speed + ' kph'
+    document.querySelector('.d4forecast-humidity').innerText = 'H: ' + data.daily[3].humidity + ' %'
     document.querySelector('.d4weather-icon').src = `http://openweathermap.org/img/wn/${d4icon}.png`
 
     let d5icon = data.daily[4].weather[0].icon
     document.querySelector('.d5temp').innerText = data.daily[4].temp.max + String.fromCharCode(176) + ' C'
-    document.querySelector('.d5forecast-wind').innerText = data.daily[4].wind_speed + ' kph'
-    document.querySelector('.d5forecast-humidity').innerText = data.daily[4].humidity + ' %'
+    document.querySelector('.d5forecast-wind').innerText = 'W: ' + data.daily[4].wind_speed + ' kph'
+    document.querySelector('.d5forecast-humidity').innerText = 'H: ' + data.daily[4].humidity + ' %'
     document.querySelector('.d5weather-icon').src = `http://openweathermap.org/img/wn/${d5icon}.png`
 
 }
 
-// function forecastDates ()
-//     let d1 = moment().add(1, 'days');
-//     document.querySelector('.d1forecast-date').innerText = d1.format(MM DD YYYY);
+// Use moment for forecast dates
+
+function setForecastDates () {
+    document.querySelector('.d1date').innerText=(moment().add(1, 'days').format("MM-DD-YYYY"))
+    document.querySelector('.d1day').innerText=(moment().add(1, 'days').format("dddd"))
+    document.querySelector('.d2date').innerText=(moment().add(2, 'days').format("MM-DD-YYYY"))
+    document.querySelector('.d2day').innerText=(moment().add(2, 'days').format("dddd"))
+    document.querySelector('.d3date').innerText=(moment().add(3, 'days').format("MM-DD-YYYY"))
+    document.querySelector('.d3day').innerText=(moment().add(3, 'days').format("dddd"))
+    document.querySelector('.d4date').innerText=(moment().add(4, 'days').format("MM-DD-YYYY"))
+    document.querySelector('.d4day').innerText=(moment().add(4, 'days').format("dddd"))
+    document.querySelector('.d1date').innerText=(moment().add(5, 'days').format("MM-DD-YYYY"))
+    document.querySelector('.d5day').innerText=(moment().add(5, 'days').format("dddd"))
+}
+
 
 
 // Display date and time without using moment
@@ -215,6 +227,8 @@ setInterval(() => {
     var timeNow = hours12Hr + ':' + minutes + ' ' + ampm;
     timeEl.innerHTML = timeNow
     dateEl.innerHTML = days[day] + ', ' + months[month] + ' ' + date
+    setForecastDates()
 },1000);
 
 init()
+
