@@ -104,6 +104,8 @@ body {
     color: cyan;
 }
 
+
+/* Colors the UV index for good, medium, and severe */
 .good-uv {
     color: rgba(65, 247, 126, 0.9);
 }

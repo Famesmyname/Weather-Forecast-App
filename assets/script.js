@@ -213,7 +213,7 @@ function setForecastDates () {
 
 
 
-// Display date and time without using moment
+// Display date and time without using moment, also sets forcast dates using function
 setInterval(() => {
     var time = new Date();
     var month = time.getMonth();
