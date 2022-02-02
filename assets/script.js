@@ -207,7 +207,7 @@ function setForecastDates () {
     document.querySelector('.d3day').innerText=(moment().add(3, 'days').format("dddd"))
     document.querySelector('.d4date').innerText=(moment().add(4, 'days').format("MM-DD-YYYY"))
     document.querySelector('.d4day').innerText=(moment().add(4, 'days').format("dddd"))
-    document.querySelector('.d1date').innerText=(moment().add(5, 'days').format("MM-DD-YYYY"))
+    document.querySelector('.d5date').innerText=(moment().add(5, 'days').format("MM-DD-YYYY"))
     document.querySelector('.d5day').innerText=(moment().add(5, 'days').format("dddd"))
 }
 

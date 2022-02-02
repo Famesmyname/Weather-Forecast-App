@@ -20,13 +20,16 @@ body {
 }
 
 .city-list {
-    padding-top: 20px;
+    padding: 5px;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     flex-direction: column;
 }
 
+.add-btn {
+    padding: 5px;
+}
 
 .current-day-info {
     display: flex;
@@ -83,7 +86,7 @@ body {
 .btn, .input {
     border: 1px whitesmoke solid;
     font-size: 1rem;
-    padding: 15px;
+    padding: 10px;
     background: none;
     outline: none;
     color: aliceblue;
@@ -92,9 +95,8 @@ body {
 
 .btn {
     letter-spacing: 0.1em;
-    padding: 15px 20px;
-    margin-left: 15px;
-
+    padding: 10px 10px;
+    margin-left: 5px;
 }
 
 .btn:hover {
@@ -220,5 +222,27 @@ body {
     .misc {
         font-size: 15px;
     }
+
+    .forecast .today .temp {
+        font-size: 15px;
+        padding: 5px 5px;
+    }
+
+    .btn, .input {
+        border: 1px whitesmoke solid;
+        font-size: 0.8rem;
+        padding: 5px;
+        background: none;
+        outline: none;
+        color: aliceblue;
+        border-radius: 5px;
+    }
+    
+    .btn {
+        letter-spacing: 0.1em;
+        padding: 5px 5px;
+        margin-left: 5px;
+    }
+    
 
 }
